@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS dishes CASCADE;
+CREATE TABLE dishes (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(50) NOT NULL,
+  price INT NOT NULL DEFAULT 0,
+  description TEXT NOT NULL,
+  vegan BOOLEAN NOT NULL DEFAULT false,
+  image_url VARCHAR(255)
+);
