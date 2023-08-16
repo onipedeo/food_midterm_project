@@ -5,4 +5,5 @@ CREATE TABLE dishes (
   price INT NOT NULL DEFAULT 0,
   description TEXT NOT NULL,
   vegan BOOLEAN NOT NULL DEFAULT false,
+  image_url VARCHAR(255)
 );
