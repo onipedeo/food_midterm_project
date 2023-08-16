@@ -5,7 +5,7 @@ CREATE TABLE users (
   email VARCHAR(255) NOT NULL,
   phone_number INTEGER NOT NULL,
   password VARCHAR(255),
-  isEmployee BOOLEAN DEFAULT FALSE
+  is_employee BOOLEAN DEFAULT FALSE
 );
 
 
