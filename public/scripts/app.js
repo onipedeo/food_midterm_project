@@ -1,8 +1,2 @@
-// Client facing scripts here
-/* global $ document*/
-$(document).ready(function() {
-
-
-
-
-});
+$(document).ready(function() { }
+)
