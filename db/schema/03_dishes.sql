@@ -4,5 +4,5 @@ CREATE TABLE dishes (
   name VARCHAR(50) NOT NULL,
   price INT NOT NULL DEFAULT 0,
   description TEXT NOT NULL,
-  vegan BOOLEAN NOT NULL,
+  vegan BOOLEAN NOT NULL DEFAULT false,
 );
