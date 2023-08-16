@@ -1,6 +1,6 @@
 const db = require('../connection');
 
-const getPaymentsByUserId = (userId) => {
+const getPaymentMethodsByUserId = (userId) => {
   return db.query(`
   SELECT *
   FROM payment_details
@@ -11,4 +11,4 @@ const getPaymentsByUserId = (userId) => {
     });
 };
 
-module.exports = { getPaymentsByUserId };
+module.exports = { getPaymentMethodsByUserId };
