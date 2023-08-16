@@ -1,4 +1,4 @@
-DROP IF EXISTS TABLE orders CASCADE
+DROP TABLE IF EXISTS orders CASCADE;
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INT REFERENCES users,
@@ -6,4 +6,3 @@ CREATE TABLE orders (
   orders_total INT NOT NULL,
   order_complete BOOLEAN NOT NULL
 );
-
