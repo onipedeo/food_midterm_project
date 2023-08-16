@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS orders_dishes CASCADE;
+CREATE TABLE orders_dishes (
+  order_id INT REFERENCES orders DELETE CASCADE,
+  dish_id INT REFERENCES dishes DELETE CASCADE
+);
