@@ -9,8 +9,8 @@ const getMenu = () => {
   return db.query(`SELECT * FROM dishes;`)
     .then(data => {
       console.log(data.rows);
-      return data.rows;
-    });
-};
+      return data.rows;     });
+     };
 
-module.exports = { getMenu };
+
+ module.exports = { getMenu };
