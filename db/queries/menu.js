@@ -8,6 +8,7 @@ const db = require('../connection');
 const getMenu = () => {
   return db.query(`SELECT * FROM dishes;`)
     .then(data => {
+      console.log(data.rows);
       return data.rows;
     });
 };
