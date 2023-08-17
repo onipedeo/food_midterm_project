@@ -12,10 +12,11 @@ const db = require('../db/connection');
 router.get('/', (req, res) => {
   const query = `SELECT * FROM dishes`;
   console.log(query);
-  db.query(query)
+  return db.query(query)
     .then(data => {
-      const dishes = data.rows;
-      res.json({ dishes });
+      console.log("in the widgets api ", data);
+      const dish = data.rows;
+      return res.json({ dish });
     })
     .catch(err => {
       res
