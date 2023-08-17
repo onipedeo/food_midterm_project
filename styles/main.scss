@@ -15,4 +15,51 @@ body {
     rgba(163, 208, 219, 1) 74%,
     rgba(163, 208, 219, 1) 100%
   );
+
+  #menu {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.267);
+    margin-top: 20px;
+    background-color:burlywood;
+    max-width: 90%;
+
+  .pizza_image {
+    max-width: 250px;
+    height: auto;
+    margin-right: 20px;
+  }
+
+  .pizaa_text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pizza_title {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+  }
+
+  .pizza_description {
+    font-size: 1rem;
+    color: #555151;
+    margin-bottom: 10px;
+  }
+
+
+  h4 {
+    font-size: 1rem;
+    color: #444;
+    margin-top: 10px;
+  }
+
+  #place_order {
+   margin-top: 100px;
+   margin-right: 30px;
+   font-size: 1rem;
+  }
+
+}
 }
