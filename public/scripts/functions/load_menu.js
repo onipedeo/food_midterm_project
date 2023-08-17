@@ -7,9 +7,8 @@
  * @results handles the data from getMenu query.
 */
 const loadMenu = function(res) {
-  // getMenu()
-  // .then((res) => {
-    let menuHtml = `` // string to concat to. will hold the resulting html.
+  // string to concat to. will hold the resulting html.
+    let menuHtml = ``;
     // html template for menu item
     // loop through items and add to menuHtml
     for (const item of res) {
@@ -35,12 +34,7 @@ const loadMenu = function(res) {
       menuHtml += itemHtml;
     }
     return menuHtml;
-  }//)
-  // .catch(err => {
-  //   console.error(err, "error!!!!");
-  // });
-//};
-
+  }
 
 
 module.exports( loadMenu )
