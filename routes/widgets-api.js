@@ -6,11 +6,11 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router  = express.Router();widgets
 const db = require('../db/connection');
 
 router.get('/', (req, res) => {
-  const query = `SELECT * FROM dishes`;
+  const query = `SELECT *, CONCAT('$', ROUND(price / 100.0, 2)) As price FROM dishes`;
   console.log(query);
   return db.query(query)
     .then(data => {
