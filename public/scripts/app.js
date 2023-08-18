@@ -25,19 +25,26 @@ $(document).ready(function() {
     const isVegan = item.vegan;
 
     const menuHtml = `
-          <article class="menu_item">
+          <article class="menu_item" id="container">
           <img class="pizza_image" src="${image_url}" alt="pizza picture">
+          <div class="pizza_text">
             <span>
-              <h3 class="pizza_title">${pizza_name}</h3> 
+              <h3 class="pizza_title">${pizza_name}</h3>
               <p class="pizza_description">${description}</p>
-              <p>Vegan: ${isVegan ? "Yes" : "No"}</p> 
+              <p>Vegan: ${isVegan ? "Yes" : "No"}</p>
             </span>
             <div>
               <h6>Price: ${price}</h6>
             </div>
+            </div>
+            <button class="btn btn-warning btn-lg" id="place_order">Add to Order</button>
           </article>
           `;
+<<<<<<< HEAD
     return menuHtml;
+=======
+          return menuHtml;
+>>>>>>> master
   };
 
 })
