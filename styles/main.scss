@@ -25,11 +25,14 @@ body {
     margin-top: 20px;
     background-color:burlywood;
     max-width: 90%;
+    max-height: 200px;
+    position: relative;
 
-  .pizza_image {
-    max-width: 250px;
-    height: auto;
+ .pizza_image {
+    max-width: 150px;
+    max-height: 180px;
     margin-right: 20px;
+    object-fit: contain;
   }
 
   .pizaa_text {
@@ -55,10 +58,11 @@ body {
     margin-top: 10px;
   }
 
-  #place_order {
-   margin-top: 100px;
-   margin-right: 30px;
-   font-size: 1rem;
+  .add_to_order {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1rem;
   }
 
 }
