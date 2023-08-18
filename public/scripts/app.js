@@ -3,6 +3,13 @@ $(document).ready(function () {
   // create local cart object
   const cart = {};
 
+  //view order button
+    $(".view-order").click(function() {
+      const cartForm = $("#cart");
+      $("html, body").animate({ scrollTop: cartForm.offset().top }, "slow");
+    });
+
+
   const addToCartListener = () => {
     $(".add_to_order").on("click", function () {
       const $itemName = $(this)
