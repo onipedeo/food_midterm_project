@@ -1,6 +1,5 @@
 // PG database client/connection setup
 const { Pool } = require('pg');
-console.log(process.env);
 const dbParams = {
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,

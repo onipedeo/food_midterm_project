@@ -11,10 +11,10 @@ const db = require('../db/connection');
 
 router.get('/', (req, res) => {
   const query = `SELECT *, CONCAT('$', ROUND(price / 100.0, 2)) As price FROM dishes`;
-  console.log(query);
+  //console.log(query);
   return db.query(query)
     .then(data => {
-      console.log("in the widgets api ", data);
+      //console.log("in the widgets api ", data);
       const dish = data.rows;
       return res.json({ dish });
     })
