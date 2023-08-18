@@ -40,11 +40,7 @@ $(document).ready(function() {
             <button class="btn btn-warning btn-lg" id="place_order">Add to Order</button>
           </article>
           `;
-<<<<<<< HEAD
     return menuHtml;
-=======
-          return menuHtml;
->>>>>>> master
   };
 
 })
