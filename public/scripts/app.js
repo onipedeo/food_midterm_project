@@ -1,25 +1,22 @@
 $(document).ready(function () {
-  console.log("loaded")
+  console.log("loaded");
   // create local cart object
   const cart = {};
 
   const addToCartListener = () => {
     $(".add_to_order").on("click", function () {
       const $itemName = $(this)
-      .closest(".menu_item")
-      .find(".pizza_title")
-      .text();
-      
-      let $itemPrice = $(this)
-      .closest(".menu_item")
-      .find(".price").
-      text()
+        .closest(".menu_item")
+        .find(".pizza_title")
+        .text();
+
+      let $itemPrice = $(this).closest(".menu_item").find(".price").text();
       //$itemPrice = $itemPrice.split(" ")[1];
-      
-      console.log($(this).closest(".menu_item"));
+
+      //console.log($(this).closest(".menu_item"));
       addItemToCart($itemName, $itemPrice);
-      console.log('add to order was clicked');
-    })
+      //console.log("add to order was clicked");
+    });
   };
 
   const render_menu = function (result) {
@@ -27,8 +24,7 @@ $(document).ready(function () {
     for (let item of result.dish) {
       let returnItem = displayDishes(item);
       $("#menu").append(returnItem);
-      
-    };
+    }
   };
   $.ajax({
     url: "/api/widgets",
@@ -69,35 +65,40 @@ $(document).ready(function () {
   }
 
   const addItemToCart = (itemName, itemPrice) => {
-      console.log(itemName, itemPrice);
-      const item = {
+    const htmlId = itemName.replace(/\s/g, "-");
+    itemPrice = itemPrice.split(" ").filter((x)=>x!=="")[2];
+    console.log(itemPrice);
+    //console.log(htmlId);
+    //console.log(itemName, itemPrice);
+    const item = {
       name: itemName,
       price: itemPrice,
-      quantity: 0
     };
-    /*if (cart[itemName]) {
+    if (cart[itemName]) {
       cart[itemName].quantity += 1;
-      $(itemName)
-        .find(".cart-item-quantity")
+      $("#cart")
+        .find("#" + htmlId)
+        .children(".cart-item-quantity")
         .text(cart[itemName].quantity);
-      $(itemName)
-        .find(".cart-item-price")
-        .text(`$${item.price * cart[itemName].quantity}`);
-    } else { */
+    } else {
       cart[itemName] = item;
       cart[itemName].quantity = 1;
       itemHtml = `
-  <div class="cart-item" id=${itemName}>
-    <span class="cart-item-name">${itemName}</span>
-    <span class="cart-item-quantity">${item.quantity}<span>
-    <span class="cart-item-price">${itemPrice}</span>
-  </div>
-  `;
-      console.log(itemHtml);
+        <div class="cart-item" id=${htmlId}>
+          <span class="cart-item-name">${itemName}</span>
+          <span class="cart-item-quantity">1</span>
+          <span class="cart-item-price">X ${itemPrice}</span>
+          <button type='button' class="btn btn-danger btn-sm remove-item">Delete</button>
+        </div>
+      `;
+      //console.log(itemHtml);
       $("#cart").append(itemHtml);
-   // }
+      // add listener to remove item
+      $(".remove-item").on("click", function () {
+        const $itemName = $(this).closest(".cart-item").find(".cart-item-name").text();
+        delete cart[$itemName];
+        $(this).closest(".cart-item").remove();
+      });
+    }
   };
-
-  
-
 });
