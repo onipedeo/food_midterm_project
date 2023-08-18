@@ -11,7 +11,7 @@ INSERT INTO dishes (name, price, description, image_url) VALUES ('Mushroom Truff
 INSERT INTO dishes (name, price, description, image_url) VALUES ('Spicy BBQ Chicken Pizza', 1599, 'Tangy BBQ sauce, grilled chicken, red onions, and a hint of spiciness.','https://www.budgetbytes.com/wp-content/uploads/2020/06/BBQ-Chicken-Pizza-V2.jpg');
 
 -- DRINKS
-INSERT INTO dishes (name, price, description) VALUES ('Classic Cola', 249, 'A timeless favorite, served ice-cold for a refreshing burst of sweetness.');
-INSERT INTO dishes (name, price, description) VALUES ('Tropical Fruit Punch', 399, 'A delightful mix of tropical fruit juices, perfect for a burst of exotic flavors.');
-INSERT INTO dishes (name, price, description) VALUES ('Iced Lemonade', 299, 'A zesty and refreshing lemonade served over ice, ideal for a hot day.');
-INSERT INTO dishes (name, price, description) VALUES ('Sparkling Raspberry Lemonade', 449, 'A fizzy blend of raspberry and lemon flavors, offering a delightful tangy fizz.');
+INSERT INTO dishes (name, price, description, image_url) VALUES ('Classic Cola', 249, 'A timeless favorite, served ice-cold for a refreshing burst of sweetness.', 'https://m.media-amazon.com/images/I/61YxXvXo8QL.jpg');
+INSERT INTO dishes (name, price, description, image_url) VALUES ('Tropical Fruit Punch', 399, 'A delightful mix of tropical fruit juices, perfect for a burst of exotic flavors.', 'https://www.metro.ca/userfiles/image/recipes/punch-fruits-tropicaux-1945.jpg');
+INSERT INTO dishes (name, price, description, image_url) VALUES ('Iced Lemonade', 299, 'A zesty and refreshing lemonade served over ice, ideal for a hot day.', 'https://static.onecms.io/wp-content/uploads/sites/19/2012/05/10/grown-up-frozen-lemonade-cl-x.jpg');
+INSERT INTO dishes (name, price, description, image_url) VALUES ('Sparkling Raspberry Lemonade', 449, 'A fizzy blend of raspberry and lemon flavors, offering a delightful tangy fizz.', 'https://www.cookingclassy.com/wp-content/uploads/2015/05/sparkling-raspberry-lemonade4-srgb..jpg');

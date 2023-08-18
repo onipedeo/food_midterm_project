@@ -1,70 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Pizza</title>
+<script type="text/javascript" src="/scripts/app.js"></script>
 
-  <!-- App JS -->
-  <script type="text/javascript" src="/scripts/app.js"></script>
+<!-- External JS -->
 
-  <!-- External JS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!-- App CSS -->
+<link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+<link rel="stylesheet" href="/vendor/border-box.css" />
+<link rel="stylesheet" href="/styles/main.css" />
+<link rel="stylesheet" href="/styles/layout.css" />
+<link rel="stylesheet" href="/styles/nav.css" />
+<link rel="stylesheet" href="/styles/header.css" />
 
-  <!-- App CSS -->
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
-  <link rel="stylesheet" href="/styles/nav.css" />
-  <link rel="stylesheet" href="/styles/header.css" />
-
-  <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
+<script src="/vendor/jquery-3.0.0.js"></script>
+<script defer src="/scripts/app.js"></script>
 
 </head>
 <body>
-  <nav>
-    <div>
-    <img src="../images/best_in_town_pizza.png" alt="simply pizza logo" id = "logo">
-  </div>
+<nav>
   <div>
-    <button type="button" class="btn btn-danger btn-lg">Your Order</button>
-    <button type="button" class="btn btn-secondary btn-lg">Contact Us</button>
-    <button type="button" class="btn btn-secondary btn-lg">register</button>
-    <button type="button" class="btn btn-secondary btn-lg">login</button>
+  <img src="../images/best_in_town_pizza.png" alt="simply pizza logo" id = "logo">
+</div>
+<div>
+  <button type="button" class="btn btn-danger btn-lg">Your Order</button>
+  <button type="button" class="btn btn-secondary btn-lg">Contact Us</button>
+  <button type="button" class="btn btn-secondary btn-lg">register</button>
+  <button type="button" class="btn btn-secondary btn-lg">login</button>
+</div>
+</nav>
+<header>
+  <img src="../images/simply_normal.png" alt="background img">
+  <div class="menu-sections">
+    <button class="btn btn-danger btn-lg">Full Menu</button>
+    <button class="btn btn-warning btn-lg">Most Popular</button>
+    <button class="btn btn-warning btn-lg">Today's Special</button>
+    <button class="btn btn-warning btn-lg">Vegan</button>
+    <button class="btn btn-warning btn-lg">Beverage</button>
+
   </div>
-  </nav>
-  <header>
-    <img src="../images/simply_normal.png" alt="background img">
-    <div class="menu-sections">
-      <button class="btn btn-danger btn-lg">Full Menu</button>
-      <button class="btn btn-warning btn-lg">Most Popular</button>
-      <button class="btn btn-warning btn-lg">Today's Special</button>
-      <button class="btn btn-warning btn-lg">Vegan</button>
-      <button class="btn btn-warning btn-lg">Beverage</button>
-
+</header>
+<main id="menu">
+  <!-- <article class="container" id="container">
+    <img class="pizza_image" src="https://www.verdictfoodservice.com/wp-content/uploads/sites/17/2021/05/beyond-meat-x-pizza-hut-hero.jpg" alt="pizza picture">
+    <div class="pizza_text">
+    <span>
+      <h3 class="pizza_title">Beyond Meat Supreme Pizza</h3>
+      <p class="pizza_description">A hearty vegan option featuring Beyond Meat sausage, bell peppers, red onions, black olives, and vegan cheese</p>
+      <div>vegan</div>
+    </span>
+    <div>
+      <h4>Price</h4>
     </div>
-  </header>
-  <main>
-    <article class="container" id="menu">
-      <!-- where all items show -->
-      <img class="pizza_image" src="https://www.verdictfoodservice.com/wp-content/uploads/sites/17/2021/05/beyond-meat-x-pizza-hut-hero.jpg" alt="pizza picture">
-      <div class="pizza_text">
-      <span>
-        <h3 class="pizza_title">Beyond Meat Supreme Pizza</h3>
-        <p class="pizza_description">A hearty vegan option featuring Beyond Meat sausage, bell peppers, red onions, black olives, and vegan cheese</p>
-        <div>vegan</div>
-      </span>
-      <div>
-        <h4>Price</h4>
-      </div>
-    </div>
-    <button class="btn btn-warning btn-lg" id="place_order">Add to Order</button>
-    </article>
-  </main>
-
-
+  </div>
+  <button class="btn btn-warning btn-lg" id="place_order">Add to Order</button>
+  </article> -->
+</main>
 </body>
 </html>
