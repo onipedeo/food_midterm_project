@@ -67,7 +67,7 @@ $(document).ready(function () {
   const addItemToCart = (itemName, itemPrice) => {
     const htmlId = itemName.replace(/\s/g, "-");
     itemPrice = itemPrice.split(" ").filter((x)=>x!=="")[2];
-    console.log(itemPrice);
+    //console.log(itemPrice);
     //console.log(htmlId);
     //console.log(itemName, itemPrice);
     const item = {
