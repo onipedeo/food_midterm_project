@@ -5,8 +5,7 @@ $(document).ready(function () {
 
   //view order button
     $(".view-order").click(function() {
-      const cartForm = $("#cart");
-      $("html, body").animate({ scrollTop: cartForm.offset().top }, "slow");
+      $("#cart-container").toggle();
     });
 
 
