@@ -1,15 +1,17 @@
 // total prices of items in cart
 export const orderTotal = () => {
-  console.log(cart);
   let total = 0;
-  for (const item in cart) {
+  const $cart = $("#cart")
 
-    let price = cart[item].price;
-    price = price.slice(1);
-    let itemTotal = Number(price) * cart[item].quantity;
+  $cart.children().each(function() {
+    let price = $(this).children(".cart-item-price").text();
+    price = Number(price.slice(3));
+    let quantity = $(this).children(".cart-item-quantity").text();
+    let itemTotal = (price) * Number(quantity);
     total += Number(Math.floor(itemTotal * 100) / 100);
-  }
+  });
   console.log(total);
+
   return total;
 };
 
