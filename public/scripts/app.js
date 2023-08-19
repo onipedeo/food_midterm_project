@@ -3,6 +3,7 @@ $(document).ready(function() {
   // create local cart object
   const cart = {};
 
+  // total prices of items in cart
   const orderTotal = () => {
 
     let total = 0;
@@ -27,10 +28,6 @@ $(document).ready(function() {
   $(".view-order").click(function() {
     $("#cart-container").toggle();
   });
-
-
-
-
 
   const addToCartListener = () => {
     $(".add_to_order").on("click", function() {
@@ -123,13 +120,31 @@ $(document).ready(function() {
       `;
       //console.log(itemHtml);
       $("#cart").append(itemHtml);
+
+
       // add listener to remove item
       $(".remove-item").on("click", function() {
         const $itemName = $(this).closest(".cart-item").find(".cart-item-name").text();
         delete cart[$itemName];
         $(this).closest(".cart-item").remove();
+        updateTotal();//stretch
       });
-
     }
+  };
+
+  const orderTotalListener = () => {
+    ('#checkout').on("click", function() {
+      $.ajax({
+        url: "/api/orders",
+        method: "POST",
+        success: (result) => {
+          render_menu(result);
+          addToCartListener();
+        },
+        error: function(err) {
+          console.log("Error in Fetch Dishes Data ", err);
+        },
+      });
+    });
   };
 });
