@@ -36,7 +36,7 @@
         />
       </div>
       <div>
-        <button type="button" class="btn btn-danger btn-lg">Your Order</button>
+        <button type="button" class="btn btn-danger btn-lg view-order">View Order</button>
         <button type="button" class="btn btn-secondary btn-lg">
           Contact Us
         </button>
@@ -47,7 +47,7 @@
     <header>
       <img src="../images/simply_normal.png" alt="background img" />
       <div class="menu-sections">
-        <button class="btn btn-danger btn-lg">Full Menu</button>
+        <button class="btn btn-danger btn-lg view-order">View Order</button>
         <button class="btn btn-warning btn-lg">Most Popular</button>
         <button class="btn btn-warning btn-lg">Today's Special</button>
         <button class="btn btn-warning btn-lg">Vegan</button>
@@ -56,8 +56,14 @@
     </header>
     <!-- test CART -->
     <main>
-      <form id="cart">
-      </form>
+      <article id="cart-container">
+        <p>Order Details</p>
+        <form id="cart">
+        </form>
+        <button>checkout</button>
+      </article>
+
+
       <article id="menu">
       </article>
     </main>

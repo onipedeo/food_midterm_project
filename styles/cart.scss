@@ -1,3 +1,12 @@
+#cart-container {
+  display: none;
+}
+
+#cart {
+  border: 2px solid #91b1be;
+  padding: 20px;
+
+
 .cart-item {
   display: flex;
   align-items: center;
@@ -13,9 +22,19 @@
   font-weight: bold;
 }
 
-.cart-item-quantity,
 .cart-item-price {
   margin: 0 10px;
+}
+
+p {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 2rem;
+}
+
+.cart-item .cart-item-quantity {
+  margin-left: auto;
+}
 }
 
 
