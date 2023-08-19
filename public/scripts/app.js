@@ -1,16 +1,39 @@
-$(document).ready(function () {
+$(document).ready(function() {
   console.log("loaded");
   // create local cart object
   const cart = {};
 
+  const orderTotal = () => {
+
+    let total = 0;
+    for (const item in cart) {
+      let price = cart[item].price;
+      price = price.slice(1);
+      let itemTotal = Number(price) * cart[item].quantity;
+      total += Number(Math.floor(itemTotal * 100) / 100);
+    }
+    console.log(total);
+    return total;
+  };
+
+  const updateTotal = () => {
+    const total = '$' + orderTotal();
+    $('#cart-total').text(total);
+
+  };
+
+
   //view order button
-    $(".view-order").click(function() {
-      $("#cart-container").toggle();
-    });
+  $(".view-order").click(function() {
+    $("#cart-container").toggle();
+  });
+
+
+
 
 
   const addToCartListener = () => {
-    $(".add_to_order").on("click", function () {
+    $(".add_to_order").on("click", function() {
       const $itemName = $(this)
         .closest(".menu_item")
         .find(".pizza_title")
@@ -21,11 +44,12 @@ $(document).ready(function () {
 
       //console.log($(this).closest(".menu_item"));
       addItemToCart($itemName, $itemPrice);
+      updateTotal();
       //console.log("add to order was clicked");
     });
   };
 
-  const render_menu = function (result) {
+  const render_menu = function(result) {
     //Here we are getting all the data. Now we can create function to display the data in the html over here.
     for (let item of result.dish) {
       let returnItem = displayDishes(item);
@@ -39,12 +63,12 @@ $(document).ready(function () {
       render_menu(result);
       addToCartListener();
     },
-    error: function (err) {
+    error: function(err) {
       console.log("Error in Fetch Dishes Data ", err);
     },
   });
 
-  function displayDishes(item) {
+  const displayDishes = function(item) {
     const price = item.price;
     const image_url = item.image_url;
     const pizza_name = item.name;
@@ -68,11 +92,11 @@ $(document).ready(function () {
           </article>
           `;
     return menuHtml;
-  }
+  };
 
   const addItemToCart = (itemName, itemPrice) => {
     const htmlId = itemName.replace(/\s/g, "-");
-    itemPrice = itemPrice.split(" ").filter((x)=>x!=="")[2];
+    itemPrice = itemPrice.split(" ").filter((x) => x !== "")[2];
     //console.log(itemPrice);
     //console.log(htmlId);
     //console.log(itemName, itemPrice);
@@ -89,7 +113,7 @@ $(document).ready(function () {
     } else {
       cart[itemName] = item;
       cart[itemName].quantity = 1;
-      itemHtml = `
+      const itemHtml = `
         <div class="cart-item" id=${htmlId}>
           <span class="cart-item-name">${itemName}</span>
           <span class="cart-item-quantity">1</span>
@@ -100,11 +124,12 @@ $(document).ready(function () {
       //console.log(itemHtml);
       $("#cart").append(itemHtml);
       // add listener to remove item
-      $(".remove-item").on("click", function () {
+      $(".remove-item").on("click", function() {
         const $itemName = $(this).closest(".cart-item").find(".cart-item-name").text();
         delete cart[$itemName];
         $(this).closest(".cart-item").remove();
       });
+
     }
   };
 });
