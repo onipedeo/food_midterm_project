@@ -1,7 +1,11 @@
+#cart-container {
+  display: none;
+}
+
 #cart {
   border: 2px solid #91b1be;
   padding: 20px;
-  margin-top: 400px;
+
 
 .cart-item {
   display: flex;
