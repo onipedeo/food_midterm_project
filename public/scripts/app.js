@@ -18,7 +18,7 @@ $(document).ready(function() {
     },
   });
 
-  //function to triger when user clicks checkout button
+  //function to trigger when user clicks checkout button
   listeners.checkoutListener();
 
 

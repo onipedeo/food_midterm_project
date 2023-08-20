@@ -12,7 +12,6 @@ export const checkoutListener = () => {
     orderDetails: JSON.stringify(orderDetails) // Convert to JSON string
   };
 
-  console.log(orderData);
   
   $.ajax({
     url: "/api/checkout/submit-order",
@@ -39,4 +38,4 @@ export const checkoutListener = () => {
   });
 
 });
-}
+};
