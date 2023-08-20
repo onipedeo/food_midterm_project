@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Simply Pizza</title>
 
-  <!-- External JS -->
+  <!-- External CSS -->
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
@@ -20,8 +20,14 @@
   <link rel="stylesheet" href="/styles/header.css" />
   <link rel="stylesheet" href="/styles/cart.css" />
 
+  <!-- App JS -->
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script async type="module" src="/scripts/app.js"></script>
+  <script async type="module" src="/scripts/login.js"></script>
+
+  <!-- External JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
+
 </head>
 
 <body>
@@ -29,16 +35,27 @@
     <div>
       <img src="../images/best_in_town_pizza.png" alt="simply pizza logo" id="logo" />
     </div>
+    <p class="username-display customer-content employee-content" ></p>
     <div>
-      <button type="button" class="btn btn-danger btn-lg view-order">View Order</button>
-      <button type="button" class="btn btn-secondary btn-lg">
-        Contact Us
-      </button>
-      <button type="button" class="btn btn-secondary btn-lg">register</button>
-      <button type="button" class="btn btn-secondary btn-lg">login</button>
+      <div class="login-form">
+        <form action="/api/logins" method="POST" id="login-form">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
+        <br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+        <input type="submit" value="  Login  " class="btn btn-primary">
+        <button type="button" value="logout" id="logout-button" class="logged-in logged-out btn btn-warning">Log Out</button>
+        <button type="button" class="btn btn-primary">Register</button>
+
+    </form>
+  </div>
     </div>
+
   </nav>
   <header>
+    <div class="customer-content">
     <img src="../images/simply_normal.png" alt="background img" />
     <div class="menu-sections">
       <button class="btn btn-danger btn-lg view-order">View Order</button>
@@ -47,9 +64,12 @@
       <button class="btn btn-warning btn-lg">Vegan</button>
       <button class="btn btn-warning btn-lg">Beverage</button>
     </div>
+  </div>
+  <div class="employee-content"></div>
   </header>
   <!-- test CART -->
   <main>
+    <div class="customer-content">
     <article id="cart-container">
       <p>Order Details</p>
       <form id="cart">
@@ -57,10 +77,10 @@
       <span id="cart-total">total</span>
       <button id="checkout">checkout</button>
     </article>
-
-
     <article id="menu">
     </article>
+    </div>
+    <div class="employee-content"></div>
   </main>
 </body>
 
