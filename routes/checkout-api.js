@@ -31,7 +31,7 @@ router.post("/send-twilio-text", (req, res) => {
   try {
     // Extract order details from request body
     const { orderTotal, orderDetails } = req.body;
-    console.log(req.body);
+
 
     // Send Twilio text to the restaurant
     const confirmedOrder = [];
