@@ -6,13 +6,6 @@ export const checkoutListener = () => {
   const orderDetails = functions.getOrderDetailsFromPage();
   const orderTotal = functions.orderTotal();
 
-  // Calculate order total
-  // const orderTotal = orderDetails.reduce((total, item) => {
-  //   return total + item.price * item.quantity;
-  // }, 0);
-
-
-
   const orderData = {
     userId: 2,
     orderTotal: orderTotal,
@@ -21,16 +14,29 @@ export const checkoutListener = () => {
 
   console.log(orderData);
   
-  // $.ajax({
-  //   url: '/checkout',
-  //   method: "POST",
-  //   data: orderData,
-  //   success: function(response) {
-  //     console.log("Order submitted:", response);
-  //   },
-  //   error: function(error) {
-  //     console.error("Error submitting order:", error);
-  //   }
-  // });
+  $.ajax({
+    url: "/api/checkout/submit-order",
+    method: "POST",
+    data: orderData,
+    success: function(response) {
+      console.log("Order submitted:", response);
+      
+      $.ajax({
+        url: "/api/checkout/send-twilio-text",
+        method: "POST",
+        data: {orderDetails, orderTotal},
+        success: function(response) {
+          console.log("Twilio text sent:", response);
+        },
+        error: function(error) {
+          console.error("Error sending Twilio text:", error);
+        }
+      });
+    },
+    error: function(error) {
+      console.error("Error submitting order:", error);
+    }
+  });
+
 });
 }
