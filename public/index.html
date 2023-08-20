@@ -37,9 +37,6 @@
     </div>
     <p class="username-display customer-content employee-content" ></p>
     <div>
-      <button type="button" class="btn btn-danger btn-lg view-order">View Order</button>
-      <button type="button" class="btn btn-secondary btn-lg">Register</button>
-      <button type="button" class="btn btn-secondary btn-lg btn-signin">Sign In</button>
       <div class="login-form">
         <form action="/api/logins" method="POST" id="login-form">
         <label for="email">Email:</label>
@@ -48,7 +45,10 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
         <br><br>
-        <input type="submit" value="Login" id="login">
+        <input type="submit" value="  Login  " class="btn btn-primary">
+        <button type="button" value="logout" id="logout-button" class="logged-in logged-out btn btn-warning">Log Out</button>
+        <button type="button" class="btn btn-primary">Register</button>
+
     </form>
   </div>
     </div>
