@@ -31,6 +31,7 @@ app.use(express.static('public'));
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const loginApiRoutes = require('./routes/login-api');
+const checkoutApiRoutes = require('./routes/checkout-api');
 // const usersRoutes = require('./routes/users');
 //const orderApi = require('./routes/orders-api');
 
@@ -40,6 +41,7 @@ const loginApiRoutes = require('./routes/login-api');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/api/logins', loginApiRoutes);
+app.use('/api/checkout/', checkoutApiRoutes);
 // app.use('/users', usersRoutes);
 //app.use('/api/orders', orderApi);
 // Note: mount other resources here, using the same pattern above

@@ -18,6 +18,11 @@ $(document).ready(function() {
     },
   });
 
+  //function to trigger when user clicks checkout button
+  listeners.checkoutListener();
+
+
+
 
   console.log("loaded");
 
