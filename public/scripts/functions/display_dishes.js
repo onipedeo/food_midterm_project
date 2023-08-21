@@ -5,6 +5,7 @@ export const displayDishes = function(item) {
   const pizza_name = item.name;
   const description = item.description;
   const isVegan = item.vegan;
+  const dishId = item.id;
 
   const menuHtml = `
         <article class="menu_item container">
@@ -18,6 +19,8 @@ export const displayDishes = function(item) {
           <div class="price">
             Price: ${price}
           </div>
+          <input type="hidden" value="${dishId}" class="dish_id">
+
         </div>
           <button class="btn btn-warning btn-lg add_to_order">Add to Order</button>
         </article>
