@@ -37,22 +37,24 @@
     </div>
     <p class="username-display customer-content employee-content" ></p>
     <div>
+      <div class="show-login-form">
+      <button class="btn btn-warning btn-lg">Log  In</button>
+      <button class="btn btn-warning btn-lg">Register</button>
+    </div>
       <div class="login-form">
         <form action="/api/logins" method="POST" id="login-form">
         <label for="email">Email:</label>
-        <input type="text" id="email" name="email" required>
-        <br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br><br>
-        <input type="submit" value="  Login  " class="btn btn-primary">
-        <button type="button" value="logout" id="logout-button" class="logged-in logged-out btn btn-warning">Log Out</button>
-        <button type="button" class="btn btn-primary">Register</button>
+        <input type="text" id="email" name="email"required>
 
+        <label for="password" class="login-input">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <input type="submit" value="  Login  " class="btn btn-warning">
+        <button type="button" class="btn btn-warning login-input">Register</button>
     </form>
   </div>
+  <button type="button" value="logout" id="logout-button" class="logged-in logged-out btn btn-warning">Log Out</button>
     </div>
-
   </nav>
   <header>
     <div class="customer-content">
@@ -68,7 +70,7 @@
   <div class="employee-content"></div>
   </header>
   <!-- test CART -->
-  <main>
+  <main class="main">
     <div class="customer-content">
     <article id="cart-container">
       <p>Order Details</p>
@@ -80,7 +82,9 @@
     <article id="menu">
     </article>
     </div>
-    <div class="employee-content"></div>
+    <div class="employee-content">
+      <article class="orders-container-employee"></article>
+    </div>
   </main>
 </body>
 
