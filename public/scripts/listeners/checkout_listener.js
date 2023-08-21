@@ -5,12 +5,15 @@ export const checkoutListener = () => {
 
   const orderDetails = functions.getOrderDetailsFromPage();
   const orderTotal = functions.orderTotal();
+  const userId = Cookies.get("customerID");
 
   const orderData = {
-    userId: 2,
+    userId: userId,
     orderTotal: orderTotal,
     orderDetails: JSON.stringify(orderDetails) // Convert to JSON string
   };
+
+  console.log(orderData.userId);
 
   
   $.ajax({
@@ -37,5 +40,11 @@ export const checkoutListener = () => {
     }
   });
 
+    //empty the cart and display success msg
+  $(".cart-container").empty();
+  $(".cart-container").append(`<p class="msg">Your order has been submitted successfully!</p><button class='close'>Close</button>`);
+  $(".close").on("click", () => {
+    $(".cart-container").hide();
+  });
 });
-};
+}
