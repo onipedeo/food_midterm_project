@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db/connection');
-const accountSid = 'ACcad053b7f895009f1ad06845972883ad';
-const authToken = '3c92d27c4d8dc064613f765d9c9ed240';
+require('dotenv').config();
+const accountSid = process.env.ACCOUNTSID;
+const authToken = process.env.AUTHTOKEN;
+const textPhone = process.env.TEXTPHONE;
 
 const client = require('twilio')(accountSid, authToken);
 
@@ -44,7 +46,7 @@ router.post("/send-twilio-text", (req, res) => {
       {
         body: `Incoming order details: ${confirmedOrder.join(', ')}. Total: ${orderTotal}`,
         from: '+12563201469',
-        to: '+12048807425'
+        to: textPhone
       }
     ).then((message) => {
       console.log(message.sid);
