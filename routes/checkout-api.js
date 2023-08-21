@@ -38,13 +38,15 @@ router.post("/send-twilio-text", (req, res) => {
     // Send Twilio text to the restaurant
     const confirmedOrder = [];
     for (const order of orderDetails) {
-      confirmedOrder.push(`${order.itemName} (${order.quantity})`);
+      confirmedOrder.push(`Name: ${order.itemName} \n Quantity: ${order.quantity}`);
     }
-
+    
 
     client.messages.create(
       {
-        body: `Incoming order details: ${confirmedOrder.join(', ')}. Total: ${orderTotal}`,
+        body: `Incoming order details:\n
+        ${confirmedOrder.join('\n')}
+        Total: ${orderTotal}`,
         from: '+12563201469',
         to: textPhone
       }
@@ -53,7 +55,8 @@ router.post("/send-twilio-text", (req, res) => {
     });
 
     res.status(200).send("Twilio text sent successfully.");
-  } catch (error) {
+  } 
+  catch (error) {
     console.error("Error sending Twilio text:", error);
     res.status(500).send("Error sending Twilio text.");
   }
