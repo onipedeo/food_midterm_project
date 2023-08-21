@@ -9,11 +9,18 @@ $(document).ready(function() {
     const email = $("#email").val();
     const password = $("#password").val();
 
+
     $.post("/api/logins", { email: email, password: password }, function(response) {
       const user = response.user;
 
+      if(!user){
+        alert('Invalid email or password.')
+        return
+      }
+
       if (user.is_employee) {
         $(".username-display").text(`Welcome, ${user.name}. You are logged in as an employee.`);
+        $(".login-form").hide();
         $(".customer-content").hide();
         $(".employee-content").show();
         $(".logged-in").show();
@@ -23,6 +30,7 @@ $(document).ready(function() {
 
       } else {
         $(".username-display").text(`Welcome, ${user.name}. Enjoy Your 🍕!`);
+        $(".login-form").hide();
         $(".employee-content").hide();
         $(".customer-content").show();
         $(".logged-in").show();

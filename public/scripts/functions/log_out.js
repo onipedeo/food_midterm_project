@@ -8,5 +8,6 @@ export function logout() {
   $(".employee-content").hide();
   $(".username-display").hide();
   $(".logged-out").hide();
+  $(".show-login-form").show();
 
 }
