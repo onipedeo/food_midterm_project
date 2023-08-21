@@ -16,6 +16,23 @@ nav {
   .logged-out{
     display: none;
   }
+
+  .login-form {
+    display: inline-block;
+
+    label {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    #email, #password {
+      display: inline-block;
+      margin-right: 10px;
+      background-color: antiquewhite;
+      border-color: bisque;
+    }
+  }
+
 }
 
 
