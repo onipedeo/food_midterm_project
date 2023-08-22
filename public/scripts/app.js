@@ -1,4 +1,5 @@
 import { functions } from './functions/functions_index.js';
+import { loadOrder } from './functions/render_orders.js';
 import { listeners } from './listeners/listeners_index.js';
 
 
@@ -27,19 +28,22 @@ $(document).ready(function() {
   //function to trigger when user clicks checkout button
   listeners.checkoutListener();
 
+  //Employee ajax call
+  $.ajax({
+    url: "/api/orders",
+    method: "GET",
+    success: (result) => {
 
+      loadOrder(result);
+
+    },
+    error: function(err) {
+      console.log("Error in Fetch Orders Data ", err);
+    },
+  });
 
 
   console.log("loaded");
-
-
-
-
-
-
-
-
-
 
 
 });
