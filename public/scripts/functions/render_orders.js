@@ -56,7 +56,7 @@ export const loadOrder = function(res) {
     }
     const closingHtml = `
     </ul>
-    <div class="order-total>Total: $${orders[order].total}</div>
+    <div class="order-total">Total: $${orders[order].total}</div>
     </article>
     `
     orderHtml += closingHtml;
