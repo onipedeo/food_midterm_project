@@ -19,7 +19,17 @@ router.post("/submit-order", async (req, res) => {
       VALUES ($1, NOW(), $2, false)
       RETURNING id;
     `;
-    await db.query(orderQuery, [userId, orderTotal * 100]);
+    let result = await db.query(orderQuery, [userId, orderTotal * 100]);
+
+    let parsedOrderDetails = JSON.parse(orderDetails);
+    for (const order of parsedOrderDetails) {
+      const ordersDishesQuery = `
+      INSERT INTO orders_dishes (order_id, dish_id, quantity)
+      VALUES ($1, $2, $3)
+      `;
+      await db.query(ordersDishesQuery, [result.rows[0]['id'], order.dish_id, order.quantity]);
+    }
+
 
     res.status(200).send("Order submitted successfully.");
   } catch (error) {
@@ -40,7 +50,7 @@ router.post("/send-twilio-text", (req, res) => {
     for (const order of orderDetails) {
       confirmedOrder.push(`Name: ${order.itemName} \n Quantity: ${order.quantity}`);
     }
-    
+
 
     client.messages.create(
       {
@@ -55,7 +65,7 @@ router.post("/send-twilio-text", (req, res) => {
     });
 
     res.status(200).send("Twilio text sent successfully.");
-  } 
+  }
   catch (error) {
     console.error("Error sending Twilio text:", error);
     res.status(500).send("Error sending Twilio text.");

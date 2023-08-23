@@ -1,11 +1,11 @@
 import { functions } from './functions_index.js';
 
-export const addItemToCart = (itemName, itemPrice) => {
+export const addItemToCart = (itemName, itemPrice, dishId) => {
   const $cart = $("#cart");
   const htmlId = itemName.replace(/\s/g, "-");
 
   // if item is already in cart, increase quantity
-  if ($cart.find("#" + htmlId).length > 0){
+  if ($cart.find("#" + htmlId).length > 0) {
     const $quantity = $("#cart")
       .find("#" + htmlId)
       .children(".cart-item-quantity");
@@ -21,6 +21,8 @@ export const addItemToCart = (itemName, itemPrice) => {
         <span class="cart-item-quantity">1</span>
         <span class="cart-item-price">X ${itemPrice}</span>
         <button type='button' class="btn btn-danger btn-sm remove-item">Delete</button>
+        <input type="hidden" value="${dishId}" class="dish_id">
+
       </div>
     `;
     //console.log(itemHtml);

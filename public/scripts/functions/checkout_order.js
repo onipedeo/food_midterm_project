@@ -5,16 +5,18 @@ export const getOrderDetailsFromPage = () => {
     const itemName = $(this).find(".cart-item-name").text();
     const quantity = parseInt($(this).find(".cart-item-quantity").text());
     let price = $(this).find(".cart-item-price").text();
-  
-      //format price to number
-      price = Number(
-        price
-          .split(" ")
-          .filter((x) => x !== "")[3]
-          .slice(1)
-      );
+    let dish_id = $(this).find(".dish_id").val();
+    console.log("dish ID", dish_id);
 
-    orderDetails.push({ itemName, quantity, price });
+    //format price to number
+    price = Number(
+      price
+        .split(" ")
+        .filter((x) => x !== "")[3]
+        .slice(1)
+    );
+
+    orderDetails.push({ itemName, quantity, price, dish_id });
   });
   return orderDetails;
 };
