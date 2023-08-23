@@ -1,5 +1,5 @@
 import { functions } from './functions/functions_index.js';
-import { loadOrder } from './functions/render_orders.js';
+import { loadOrder, render_orders } from './functions/render_orders.js';
 import { listeners } from './listeners/listeners_index.js';
 
 
@@ -34,7 +34,8 @@ $(document).ready(function() {
     method: "GET",
     success: (result) => {
 
-      loadOrder(result);
+      const ordersHtml = loadOrder(result);
+      render_orders(ordersHtml);
 
     },
     error: function(err) {

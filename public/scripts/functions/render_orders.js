@@ -64,14 +64,10 @@ export const loadOrder = function(res) {
 
   }
 
-  //return ordersHtml;
-  $(".orders-container-employee").append(orders);
+  return ordersHtml;
 }
 
-// export const render_orders = function(result) {
-//   //Here we are getting all the data. Now we can create function to display the data in the html over here.
-//   for (let item of result.dish) {
-//     let returnItem = loadOrder(item);
-//     $(".orders-container-employee").append(returnItem);
-//   }
-// };
+export const render_orders = function(html) {
+  $("#orders-container-employee").append(html);
+
+};
