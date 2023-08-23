@@ -65,5 +65,19 @@ body {
     font-size: 1rem;
   }
 
+
 }
+
+#orders-container-employee {
+  margin-top: 150px;
+
+  .order {
+    border: 2px solid #444;
+    background-color:inherit;
+    padding: 10px;
+    margin-top: 10px;
+  }
+}
+
+
 }
