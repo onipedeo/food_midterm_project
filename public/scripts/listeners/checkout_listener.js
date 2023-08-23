@@ -1,19 +1,17 @@
 import { functions } from '../functions/functions_index.js';
+import { listeners } from '../listeners/listeners_index.js';
 
 export const checkoutListener = () => {
   $(".checkout-button").on("click", function() {
 
   const orderDetails = functions.getOrderDetailsFromPage();
   const orderTotal = functions.orderTotal();
-  const userId = Cookies.get("customerID");
 
   const orderData = {
-    userId: userId,
+    userId: 2,
     orderTotal: orderTotal,
     orderDetails: JSON.stringify(orderDetails) // Convert to JSON string
   };
-
-  console.log(orderData.userId);
 
   
   $.ajax({
@@ -40,11 +38,26 @@ export const checkoutListener = () => {
     }
   });
 
-    //empty the cart and display success msg
+      // Show loading animation
   $(".cart-container").empty();
-  $(".cart-container").append(`<p class="msg">Your order has been submitted successfully!</p><button class='close'>Close</button>`);
-  $(".close").on("click", () => {
-    $(".cart-container").hide();
+  $(".cart-container").append(`<p class="msg">Submitting your order...</p>`);
+
+  // Simulate a 2-second delay using setTimeout
+  setTimeout(() => {
+    // Clear the cart
+    $(".cart-container").empty();
+
+    // Display success message
+    $(".cart-container").append(`
+      <p class="msg">Your order has been submitted successfully!</p>
+      <button class='close'>Close</button>
+    `);
+
+    // Attach event listener to close button
+    $(".close").on("click", () => {
+      // Hide the cart and revert to previous state
+      $(".cart-container").empty();
+    });
+  }, 2000);
   });
-});
-}
+};
