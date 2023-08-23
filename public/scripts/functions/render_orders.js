@@ -1,7 +1,4 @@
 
-
-
-
 export const loadOrder = function(res) {
   // string to concat to. will hold the resulting html.
   let ordersHtml = ``;
