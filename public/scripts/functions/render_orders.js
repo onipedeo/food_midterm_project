@@ -56,7 +56,11 @@ export const loadOrder = function(res) {
     }
     const closingHtml = `
     </ul>
-    <div class="order-total>Total: $${orders[order].total}</div>
+    <div class="order-total">Total: $${orders[order].total}</div>
+    <label for="numericInput">Estimated Time:</label>
+    <input type="number" id="numericInput" name="numericInput" min="0" max="100" step="1">
+    <input type="submit" value="Enter">
+    <button type="button">Complete Order</button>
     </article>
     `
     orderHtml += closingHtml;
