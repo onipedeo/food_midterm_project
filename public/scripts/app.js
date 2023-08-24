@@ -4,7 +4,8 @@ import { listeners } from './listeners/listeners_index.js';
 
 
 $(document).ready(function() {
-  $(".login-form").hide();
+   $(".login-form").hide();
+   $(".employee-content").hide();
   listeners.viewOrderListener();
 
   $(".show-login-form").click(function() {
