@@ -15,8 +15,8 @@ router.post("/submit-order", async (req, res) => {
 
     // Insert order into "orders" table
     const orderQuery = `
-      INSERT INTO orders (user_id, orders_date, orders_total, order_complete)
-      VALUES ($1, NOW(), $2, false)
+      INSERT INTO orders (user_id, orders_total)
+      VALUES ($1, $2)
       RETURNING id;
     `;
     let result = await db.query(orderQuery, [userId, orderTotal * 100]);
@@ -72,11 +72,12 @@ router.post("/send-twilio-text", (req, res) => {
   }
 });
 
+
 router.get("/get-estimated-time", async (req, res) => {
   const estimatedTimeQuery = `
   SELECT estimated_completion
   FROM orders
-  ORDER BY orders_date DESC
+  ORDER BY id DESC
   LIMIT 1;
   `
   try {
