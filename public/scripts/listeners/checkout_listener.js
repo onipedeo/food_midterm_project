@@ -63,7 +63,7 @@ export const checkoutListener = () => {
     };
     // Show loading animation
     $(".cart-container").empty();
-    $(".cart-container").append(`<p class="msg">Submitting your order...</p>`);
+    $(".cart-container").append(`<p class="msg">Submitting your order 🍕 🍕 🍕</p>`);
 
     // Simulate a 2-second delay using setTimeout
     setTimeout(() => {
@@ -72,9 +72,11 @@ export const checkoutListener = () => {
 
       // Display success message
       $(".cart-container").append(`
+      <div class="order-msg">
       <p class="msg1">Your order has been submitted successfully!</p>
       <p class="msg2">Waiting for estimated time of completion</p>
-      <button class='close'>Close</button>
+      <button class='close btn btn-warning'>Close</button>
+      </div>
     `);
       let refreshEstimate = setInterval(updateEstimatedTime, 5000);
 
