@@ -4,5 +4,6 @@ CREATE TABLE orders (
   user_id INT REFERENCES users,
   orders_date DATE NOT NULL DEFAULT NOW(),
   orders_total INT NOT NULL,
-  order_complete BOOLEAN NOT NULL DEFAULT FALSE
+  order_complete BOOLEAN NOT NULL DEFAULT FALSE,
+  estimated_completion TIME
 );
