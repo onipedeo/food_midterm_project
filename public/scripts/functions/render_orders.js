@@ -7,9 +7,11 @@ export const loadOrder = function(res) {
   const data = res.order;
   const orders = {};
 
+
   for (const item in data) {
 
     const orderId = data[item].orderid;
+
     if (orders[orderId]) {
       const dish = {
         name: '',
@@ -40,6 +42,7 @@ export const loadOrder = function(res) {
   }
 
   for (const order in orders) {
+
     let orderHtml = `
     <article class="order">
     <div class="order-username">${orders[order].username}</div>
@@ -57,10 +60,14 @@ export const loadOrder = function(res) {
     const closingHtml = `
     </ul>
     <div class="order-total">Total: $${orders[order].total}</div>
-    <label for="numericInput">Estimated Time:</label>
-    <input type="time" id="timeInput" name="timeInput" min="09:00" max="23:00">
-    <input type="submit" value="Enter">
-    <button type="button">Complete Order</button>
+    <form class="estimated-time" method="POST" action="/api/estimated-time">
+    <label>Order ID:</lable>
+    <input value='${order}' name="orderID" type="text" class="orderID" readonly>
+    <label for="time">Estimated Time:</label>
+    <input type="time" name="timeInput" min="09:00" max="23:00" class="timeInput">
+    <button type="submit" class="enter-time">Enter</button>
+    </form>
+    <button type="button" class="complete-order">Complete Order</button>
     </article>
     `
     orderHtml += closingHtml;
@@ -73,5 +80,4 @@ export const loadOrder = function(res) {
 
 export const render_orders = function(html) {
   $("#orders-container-employee").append(html);
-
 };
