@@ -1,5 +1,5 @@
 export const submitTimeListener = () => {
-  $(".enter-time").on('click', function(e) {
+  $(".enter-time").on("click", function (e) {
     e.preventDefault();
     const orderId = $(this).siblings(".orderID").val();
     const time = $(this).siblings(".timeInput").val();
@@ -11,11 +11,21 @@ export const submitTimeListener = () => {
       method: "POST",
       data,
       success: (result) => {
-        console.log("Estimated time posted successfully");
+        $.ajax({
+          url: "/api/estimated-time/send-twilio-estimated-time-text",
+          method: "POST",
+          data: { time },
+          success: function (response) {
+            console.log("Twilio text sent:", response);
+          },
+          error: function (error) {
+            console.error("Error sending Twilio text:", error);
+          },
+        });
       },
-      error: function(err) {
+      error: function (err) {
         console.log("Error posting estimated time. ", err.responseText);
       },
     });
   });
-}
+};
