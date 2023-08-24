@@ -11,6 +11,22 @@ export const submitTimeListener = () => {
       method: "POST",
       data,
       success: (result) => {
+        // Clear the input field
+        $(this).siblings(".timeInput").val("");
+
+        // Display success message at the top
+        const successMessage = $("<div>")
+          .addClass("success-message")
+          .text("Estimated time submitted successfully.");
+        $("body").prepend(successMessage);
+
+        // Scroll to the top of the page
+        window.scrollTo(0, 0);
+
+        setTimeout(function () {
+          successMessage.remove(); // Remove the message after a certain time
+        }, 3000); // Adjust the time (in milliseconds) as needed
+
         $.ajax({
           url: "/api/estimated-time/send-twilio-estimated-time-text",
           method: "POST",
