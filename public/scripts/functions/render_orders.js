@@ -63,11 +63,11 @@ export const loadOrder = function(res) {
     <form class="estimated-time">
       <label>Order ID:</label>
       <input value='${order}' name="orderID" type="text" class="orderID" readonly></input>
-      <label for="time">Estimated Time:</label>
+      <label for="time">Estimated Completion Time:</label>
       <input type="time" name="timeInput" min="09:00" max="23:00" class="timeInput"></input>
-      <button class="enter-time">Enter</button>
+      <button class="enter-time btn btn-primary">Enter</button>
     </form>
-    <button class="complete-order">Complete Order</button>
+    <button class="complete-order btn btn-primary">Complete Order</button>
     </article>
     `
     orderHtml += closingHtml;
