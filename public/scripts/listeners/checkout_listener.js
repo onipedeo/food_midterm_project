@@ -11,30 +11,46 @@ export const checkoutListener = () => {
       orderDetails: JSON.stringify(orderDetails), // Convert to JSON string
     };
 
-    $.ajax({
-      url: "/api/checkout/submit-order",
-      method: "POST",
-      data: orderData,
-      success: function (response) {
-        console.log("Order submitted:", response);
+    //$.ajax({
+    //  url: "/api/checkout/submit-order",
+    //  method: "POST",
+    //  data: orderData,
+    //  success: function (response) {
+    //    console.log("Order submitted:", response);
+    //
+    //    $.ajax({
+    //      url: "/api/checkout/send-twilio-text",
+    //      method: "POST",
+    //      data: { orderDetails, orderTotal },
+    //      success: function (response) {
+    //        console.log("Twilio text sent:", response);
+    //      },
+    //      error: function (error) {
+    //        console.error("Error sending Twilio text:", error);
+    //      },
+    //    });
+    //  },
+    //  error: function (error) {
+    //    console.error("Error submitting order:", error);
+    //  },
+    //});
 
-        $.ajax({
-          url: "/api/checkout/send-twilio-text",
-          method: "POST",
-          data: { orderDetails, orderTotal },
-          success: function (response) {
-            console.log("Twilio text sent:", response);
-          },
-          error: function (error) {
-            console.error("Error sending Twilio text:", error);
-          },
-        });
-      },
-      error: function (error) {
-        console.error("Error submitting order:", error);
-      },
-    });
-
+    // Get estimated time and add to DOM
+    const updateEstimatedTime = () => {
+      $.get("/api/checkout/get-estimated-time", function (data) {
+        console.log("data", data);
+        const estimatedTime = data.estimated_completion;
+        console.log("estimatedTime", estimatedTime);
+        if (estimatedTime !== null) {
+          $(".cart-container .msg2").text(
+            `Your order will be ready for pickup at ${estimatedTime}`
+          );
+          if (refreshInterval) {
+            clearInterval(refreshInterval);
+          }
+        }
+      });
+    };
     // Show loading animation
     $(".cart-container").empty();
     $(".cart-container").append(`<p class="msg">Submitting your order...</p>`);
@@ -47,22 +63,17 @@ export const checkoutListener = () => {
       // Display success message
       $(".cart-container").append(`
       <p class="msg1">Your order has been submitted successfully!</p>
+      <p class="msg2">Waiting for estimated time of completion</p>
       <button class='close'>Close</button>
     `);
+      const refreshEstimate = setInterval(updateEstimatedTime(), 500);
+
 
       // Attach event listener to close button
       $(".close").on("click", () => {
         // Hide the cart and revert to previous state
         $(".cart-container").empty();
-
-        $(".cart-container").append(`
-      <p class="msg2">Your order will be ready for pickup in 10 mins!</p>
-      <button class='close2'>Close</button>
-    `);
-
-        $(".close2").on("click", () => {
-          $(".cart-container").empty();
-        });
+        clearInterval(refreshEstimate);
       });
     }, 2000);
   });

@@ -72,6 +72,25 @@ router.post("/send-twilio-text", (req, res) => {
   }
 });
 
+router.get("/get-estimated-time", async (req, res) => {
+  const estimatedTimeQuery = `
+  SELECT estimated_completion
+  FROM orders
+  ORDER BY orders_date DESC
+  LIMIT 1;
+  `
+  try {
+    const result = await db.query(estimatedTimeQuery)
+    const estimatedTime = result.rows[0];
+    res.json(estimatedTime);
+  }
+  catch (error) {
+    console.error("Error getting estimated time:", error);
+    res.status(500).send("Error getting estimated time.");
+  }
+
+});
+
 
 
 module.exports = router;
