@@ -1,85 +1,83 @@
 #cart-container {
   display: none;
 
-.order-detail {
-  text-align: center;
-  margin-top: 10px;
-  font-size: 1.5rem;
-  font-weight: bold;
-
-}
-
-.msg{
-  text-align: center;
-  margin-top: 20px;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-.order-msg {
-  margin-top: 15px;
-  padding-bottom: 10px;
-  padding-top: 5px;
-  background: burlywood;
-  border: 2px solid #91b1be;
-  border-radius: 5px;
-
-  p {
+  .order-detail {
     text-align: center;
     margin-top: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .msg {
+    text-align: center;
+    margin-top: 20px;
     font-size: 1rem;
     font-weight: bold;
   }
 
-}
+  .order-msg {
+    margin-top: 15px;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    background: burlywood;
+    border: 2px solid #91b1be;
+    border-radius: 5px;
 
-.close {
-  margin-left: 650px;
-}
+    p {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  }
 
-#cart {
-  border: 2px solid #5590a9;
-  padding: 20px;
+  .close {
+    margin-left: 650px;
+  }
 
-.cart-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px;
-  border: 2px solid #91b1be;
-  border-radius: 5px;
-  margin: 10px 0;
-  background-color: #cddaea;
-}
+  #cart {
+    border: 2px solid #5590a9;
+    padding: 20px;
+  }
 
-.cart-item-name {
-  font-weight: bold;
-}
+  .cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border: 2px solid #91b1be;
+    border-radius: 5px;
+    margin: 10px 0;
+    background-color: #cddaea;
+  }
 
-.cart-item-price {
-  margin: 0 10px;
-}
+  .cart-item-name {
+    font-weight: bold;
+  }
 
-.cart-item .cart-item-quantity {
-  margin-left: auto;
-}
+  .cart-item-price {
+    margin: 0 10px;
+  }
 
+  .cart-item .cart-item-quantity {
+    margin-left: auto;
+  }
 
-// .msg {
-//   display:flex;
-//   justify-content: center;
-//   margin-top: 10px;
-//   text-align: center;
-// }
+  // .msg {
+  //   display:flex;
+  //   justify-content: center;
+  //   margin-top: 10px;
+  //   text-align: center;
+  // }
 
-#cart-total {
-  padding-right: 15px;
-}
+  #cart-total {
+    padding-right: 15px;
+  }
 
-.checkout-button {
-  margin-top: 5px;
-}
-  
+  .checkout-button {
+    margin-top: 5px;
+  }
+
   p {
     text-align: center;
     margin-top: 10px;
@@ -89,3 +87,4 @@
   .cart-item .cart-item-quantity {
     margin-left: auto;
   }
+}
