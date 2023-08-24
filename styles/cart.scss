@@ -41,7 +41,6 @@
   border: 2px solid #5590a9;
   padding: 20px;
 
-
 .cart-item {
   display: flex;
   align-items: center;
@@ -72,7 +71,6 @@
 //   margin-top: 10px;
 //   text-align: center;
 // }
-}
 
 #cart-total {
   padding-right: 15px;
@@ -81,5 +79,13 @@
 .checkout-button {
   margin-top: 5px;
 }
-}
+  
+  p {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 2rem;
+  }
 
+  .cart-item .cart-item-quantity {
+    margin-left: auto;
+  }
