@@ -15,8 +15,8 @@ router.post("/submit-order", async (req, res) => {
 
     // Insert order into "orders" table
     const orderQuery = `
-      INSERT INTO orders (user_id, orders_date, orders_total, order_complete)
-      VALUES ($1, NOW(), $2, false)
+      INSERT INTO orders (user_id, orders_total)
+      VALUES ($1, $2)
       RETURNING id;
     `;
     let result = await db.query(orderQuery, [userId, orderTotal * 100]);
@@ -70,6 +70,26 @@ router.post("/send-twilio-text", (req, res) => {
     console.error("Error sending Twilio text:", error);
     res.status(500).send("Error sending Twilio text.");
   }
+});
+
+
+router.get("/get-estimated-time", async (req, res) => {
+  const estimatedTimeQuery = `
+  SELECT estimated_completion
+  FROM orders
+  ORDER BY id DESC
+  LIMIT 1;
+  `
+  try {
+    const result = await db.query(estimatedTimeQuery)
+    const estimatedTime = result.rows[0];
+    res.json(estimatedTime);
+  }
+  catch (error) {
+    console.error("Error getting estimated time:", error);
+    res.status(500).send("Error getting estimated time.");
+  }
+
 });
 
 

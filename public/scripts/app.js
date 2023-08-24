@@ -37,6 +37,7 @@ $(document).ready(function() {
 
       const ordersHtml = loadOrder(result);
       render_orders(ordersHtml);
+      listeners.submitTimeListener();
 
     },
     error: function(err) {

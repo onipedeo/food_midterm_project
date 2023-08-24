@@ -4,9 +4,9 @@ const db = require('../db/connection');
 
 router.post('/', (req, res) => {
 
-  const {orderID, timeInput} = req.body;
-  console.log(orderID, timeInput);
-  const params = [timeInput, parseInt(orderID)];
+  const {orderId, timeInput} = req.body;
+  console.log(orderId, timeInput);
+  const params = [timeInput, parseInt(orderId)];
 
 
   const query = `UPDATE orders
@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
 
   db.query(query, params)
     .then((result) => {
-      return res.json({ message: "Estimated time upate successful" });
+      return res.json({ message: "Estimated time update successful" });
     })
     .catch(error => {
       res.status(500).json({ error: error.message });

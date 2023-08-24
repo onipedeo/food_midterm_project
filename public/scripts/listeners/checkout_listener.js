@@ -16,8 +16,6 @@ export const checkoutListener = () => {
       method: "POST",
       data: orderData,
       success: function (response) {
-        console.log("Order submitted:", response);
-
         $.ajax({
           url: "/api/checkout/send-twilio-text",
           method: "POST",
@@ -35,6 +33,34 @@ export const checkoutListener = () => {
       },
     });
 
+    const formatTimeAmPm = (time24h) => {
+      let splitTime = time24h.split(":");
+      let hours = Number(splitTime[0]);
+      let minutes = Number(splitTime[1]);
+
+      const amPm = hours >= 12 ? "PM" : "AM";
+      if (hours > 12) {
+        hours -= 12;
+      }
+      return `${hours}:${minutes} ${amPm}`;
+    };
+
+    // Get estimated time and add to DOM
+    const updateEstimatedTime = () => {
+      $.get("/api/checkout/get-estimated-time", function (data) {
+
+        const estimatedTime = data.estimated_completion;
+
+        if (estimatedTime !== null) {
+
+          const formattedTime = formatTimeAmPm(estimatedTime);
+
+          $(".msg2").text(
+            `Your order will be ready for pickup at ${formattedTime}`
+          );
+        }
+      });
+    };
     // Show loading animation
     $(".cart-container").empty();
     $(".cart-container").append(`<p class="msg">Submitting your order...</p>`);
@@ -47,22 +73,16 @@ export const checkoutListener = () => {
       // Display success message
       $(".cart-container").append(`
       <p class="msg1">Your order has been submitted successfully!</p>
+      <p class="msg2">Waiting for estimated time of completion</p>
       <button class='close'>Close</button>
     `);
+      let refreshEstimate = setInterval(updateEstimatedTime, 5000);
 
       // Attach event listener to close button
       $(".close").on("click", () => {
         // Hide the cart and revert to previous state
         $(".cart-container").empty();
-
-        $(".cart-container").append(`
-      <p class="msg2">Your order will be ready for pickup in 10 mins!</p>
-      <button class='close2'>Close</button>
-    `);
-
-        $(".close2").on("click", () => {
-          $(".cart-container").empty();
-        });
+        clearInterval(refreshEstimate);
       });
     }, 2000);
   });
