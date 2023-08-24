@@ -60,14 +60,14 @@ export const loadOrder = function(res) {
     const closingHtml = `
     </ul>
     <div class="order-total">Total: $${orders[order].total}</div>
-    <form class="estimated-time" method="POST" action="/api/estimated-time">
-    <label>Order ID:</lable>
-    <input value='${order}' name="orderID" type="text" class="orderID" readonly>
-    <label for="time">Estimated Time:</label>
-    <input type="time" name="timeInput" min="09:00" max="23:00" class="timeInput">
-    <button type="submit" class="enter-time">Enter</button>
+    <form class="estimated-time">
+      <label>Order ID:</label>
+      <input value='${order}' name="orderID" type="text" class="orderID" readonly></input>
+      <label for="time">Estimated Time:</label>
+      <input type="time" name="timeInput" min="09:00" max="23:00" class="timeInput"></input>
+      <button class="enter-time">Enter</button>
     </form>
-    <button type="button" class="complete-order">Complete Order</button>
+    <button class="complete-order">Complete Order</button>
     </article>
     `
     orderHtml += closingHtml;
