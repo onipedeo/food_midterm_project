@@ -3,15 +3,13 @@ export const submitTimeListener = () => {
     e.preventDefault();
     const orderId = $(this).siblings(".orderID").val();
     const time = $(this).siblings(".timeInput").val();
-    console.log("time", time);
     const data = { orderId, timeInput: time };
-    console.log("data", data);
     $.post({
       url: "/api/estimated-time",
       method: "POST",
       data,
       success: (result) => {
-        // Clear the input field
+        // Clear the estimated time
         $(this).siblings(".timeInput").val("");
 
         // Display success message at the top
@@ -20,12 +18,12 @@ export const submitTimeListener = () => {
           .text("Estimated time submitted successfully.");
         $("body").prepend(successMessage);
 
-        // Scroll to the top of the page
+        // Automatically scroll to the top of the page after clicking enter button
         window.scrollTo(0, 0);
 
         setTimeout(function () {
-          successMessage.remove(); // Remove the message after a certain time
-        }, 3000); // Adjust the time (in milliseconds) as needed
+          successMessage.remove(); // Remove the message after 3 seconds
+        }, 3000);
 
         $.ajax({
           url: "/api/estimated-time/send-twilio-estimated-time-text",
