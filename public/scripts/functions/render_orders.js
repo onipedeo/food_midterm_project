@@ -67,7 +67,6 @@ export const loadOrder = function(res) {
       <input type="time" name="timeInput" min="09:00" max="23:00" class="timeInput"></input>
       <button class="enter-time btn btn-primary">Enter</button>
     </form>
-    <button class="complete-order btn btn-primary">Complete Order</button>
     </article>
     `
     orderHtml += closingHtml;
