@@ -69,7 +69,6 @@ export const loadOrder = function(res) {
       <button class="enter-time btn btn-primary">Enter</button>
       </div>
     </form>
-    <button class="complete-order btn btn-primary">Complete Order</button>
     </article>
     `
     orderHtml += closingHtml;
