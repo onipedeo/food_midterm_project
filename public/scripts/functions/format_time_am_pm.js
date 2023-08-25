@@ -1,4 +1,7 @@
 export const formatTimeAmPm = (time24h) => {
+  if (!time24h) {
+    return null;
+  }
   let splitTime = time24h.split(":");
   let hours = Number(splitTime[0]);
   let minutes = (splitTime[1]);
