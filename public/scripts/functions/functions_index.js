@@ -5,6 +5,7 @@ import { render_menu } from './render_menu.js';
 import { displayDishes } from './display_dishes.js';
 import { logout } from './log_out.js';
 import { getOrderDetailsFromPage } from './checkout_order.js';
+import { formatTimeAmPm } from './format_time_am_pm.js';
 
 export const functions = {
   orderTotal,
@@ -13,5 +14,6 @@ export const functions = {
   render_menu,
   displayDishes,
   logout,
-  getOrderDetailsFromPage
+  getOrderDetailsFromPage,
+  formatTimeAmPm
 }

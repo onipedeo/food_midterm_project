@@ -33,17 +33,6 @@ export const checkoutListener = () => {
       },
     });
 
-    const formatTimeAmPm = (time24h) => {
-      let splitTime = time24h.split(":");
-      let hours = Number(splitTime[0]);
-      let minutes = Number(splitTime[1]);
-
-      const amPm = hours >= 12 ? "PM" : "AM";
-      if (hours > 12) {
-        hours -= 12;
-      }
-      return `${hours}:${minutes} ${amPm}`;
-    };
 
     // Get estimated time and add to DOM
     const updateEstimatedTime = () => {
@@ -53,7 +42,7 @@ export const checkoutListener = () => {
 
         if (estimatedTime !== null) {
 
-          const formattedTime = formatTimeAmPm(estimatedTime);
+          const formattedTime = functions.formatTimeAmPm(estimatedTime);
 
           $(".msg2").text(
             `Your order will be ready for pickup at ${formattedTime}`

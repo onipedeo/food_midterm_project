@@ -63,9 +63,11 @@ export const loadOrder = function(res) {
     <form class="estimated-time">
       <label>Order ID:</label>
       <input value='${order}' name="orderID" type="text" class="orderID" readonly></input>
+      <div class="time-input-container">
       <label for="time">Estimated Completion Time:</label>
       <input type="time" name="timeInput" min="09:00" max="23:00" class="timeInput"></input>
       <button class="enter-time btn btn-primary">Enter</button>
+      </div>
     </form>
     <button class="complete-order btn btn-primary">Complete Order</button>
     </article>
