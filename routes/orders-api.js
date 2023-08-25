@@ -5,7 +5,7 @@ const db = require('../db/connection');
 router.get('/', (req, res) => {
 
   const query = (`
-  SELECT  users.name AS username, order_id AS orderID, dishes.name AS dishname, quantity, orders.orders_total AS total
+  SELECT  users.name AS username, order_id AS orderID, dishes.name AS dishname, quantity, orders.orders_total AS total, estimated_completion
   FROM users
   JOIN orders ON users.id = user_id
   JOIN orders_dishes ON orders.id = order_id
