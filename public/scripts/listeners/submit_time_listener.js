@@ -1,29 +1,28 @@
+import { functions } from "../functions/functions_index.js";
+
 export const submitTimeListener = () => {
   $(".enter-time").on("click", function (e) {
     e.preventDefault();
-    const orderId = $(this).siblings(".orderID").val();
-    const time = $(this).siblings(".timeInput").val();
+    const orderId = $(this).parent().siblings(".orderID").val();
+    let time = $(this).siblings(".timeInput").val();
+    time = functions.formatTimeAmPm(time);
     const data = { orderId, timeInput: time };
+    console.log("data", data);
+
+    const successMessage = `Estimated time submitted: ${time}`;
+    const successMessageElement = $("<div>")
+      .addClass("success-message")
+      .text(successMessage);
     $.post({
       url: "/api/estimated-time",
       method: "POST",
       data,
       success: (result) => {
         // Clear the estimated time
-        $(this).siblings(".timeInput").val("");
 
         // Display success message at the top
-        const successMessage = $("<div>")
-          .addClass("success-message")
-          .text("Estimated time submitted successfully.");
-        $("body").prepend(successMessage);
-
-        // Automatically scroll to the top of the page after clicking enter button
-        window.scrollTo(0, 0);
-
-        setTimeout(function () {
-          successMessage.remove(); // Remove the message after 3 seconds
-        }, 3000);
+        $(this).parent().prepend(successMessageElement);
+        $(this).siblings(".timeInput").val("");
 
         $.ajax({
           url: "/api/estimated-time/send-twilio-estimated-time-text",
