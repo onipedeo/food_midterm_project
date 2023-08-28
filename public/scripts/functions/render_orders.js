@@ -1,4 +1,4 @@
-
+import { functions } from "./functions_index.js";
 export const loadOrder = function(res) {
   // string to concat to. will hold the resulting html.
   let ordersHtml = ``;
@@ -6,7 +6,6 @@ export const loadOrder = function(res) {
   // loop through items and add to menuHtml
   const data = res.order;
   const orders = {};
-
 
   for (const item in data) {
 
@@ -21,10 +20,12 @@ export const loadOrder = function(res) {
       dish.qty = data[item].quantity;
       orders[orderId].dishes.push(dish)
     } else {
+
       orders[orderId] = {
         dishes: [],
         total: 0,
-        username: data[item].username
+        username: data[item].username,
+        estimated_completion: functions.formatTimeAmPm(data[item].estimated_completion) || null
       };
       const total = data[item].total / 100;
 
@@ -57,14 +58,22 @@ export const loadOrder = function(res) {
       orderHtml += string;
 
     }
-    const closingHtml = `
+    let closingHtml = `
     </ul>
     <div class="order-total">Total: $${orders[order].total}</div>
     <form class="estimated-time">
       <label>Order ID:</label>
       <input value='${order}' name="orderID" type="text" class="orderID" readonly></input>
-      <div class="time-input-container">
-      <label for="time">Estimated Completion Time:</label>
+      <div class="time-input-container">`
+
+      if (orders[order].estimated_completion) {
+        const estimatedTimeDiv = `<div class="success-message">Estimated Completion Time: ${orders[order].estimated_completion}</div>`
+        closingHtml += estimatedTimeDiv;
+
+      }
+
+      closingHtml += `
+      <label for="time">New Estimated Completion Time:</label>
       <input type="time" name="timeInput" min="09:00" max="23:00" class="timeInput"></input>
       <button class="enter-time btn btn-primary">Enter</button>
       </div>

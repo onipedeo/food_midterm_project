@@ -12,7 +12,12 @@ Restaurant Notification: The restaurant is notified via SMS when a customer plac
 
 
 ### Final Product
-(The screenshot goes here)
+!["screenshot of the banner."](/docs/banner.png)
+!["screenshot of the Employee Page."](/docs/Employee_page.png)
+!["screenshot of the Menu Tab."](/docs/Menu_tab.png)
+!["screenshot of the Order screen."](/docs/Order_screen.png)
+!["screenshot of the User page."](/docs/User_page.png)
+!["screenshot of the Welcome."](/docs/Welcome.png)
 
 
 ### Getting Started
